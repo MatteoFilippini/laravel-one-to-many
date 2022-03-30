@@ -23,6 +23,16 @@
                 <label for="exampleImage">Immagine</label>
                 <input type="text" class="form-control" id="exampleImage" name="image" value="{{ old('image', $post->image) }}">
             </div>
+            <!-- categorie -->
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Categoria</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="category_id">
+                    <option selected>-</option>
+                    @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{ $category->label }}</option>
+                    @endforeach
+                </select>
+            </div>
             <button type=" submit" class="btn btn-primary">Conferma</button>
             <button type="reset" class="btn btn-danger">Reset</button>
             <a href="{{route('admin.posts.index')}}">Indietro</a>
