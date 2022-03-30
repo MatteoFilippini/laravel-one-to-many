@@ -41,7 +41,6 @@ class PostController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        // dd($request->all());
         $data = $request->all();
         $data['slug'] = Str::slug($request->title, '-');
         $post = Post::create($data);
@@ -68,7 +67,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
